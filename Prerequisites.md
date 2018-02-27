@@ -41,7 +41,10 @@ This is required to support installs via WDPs.
 This is required as the Sitecore WDPs contain web.configs using the module.
 + SQL Server Data-Tier Application Framework - Supports dacpac installation via the WDPs.
 Download [here][5]. Please ensure you closely follow the detailed system requirements
-and install both versions of `SQLSysCLRTypes`.
+and install both versions of `SQLSysCLRTypes` and both versions of the `DacFramework`
+on x64 machines.
++ SqlCmd - Some configurations require use of SqlCmd. You will need to install
+[Microsoft ODBC driver][[9] and [Microsoft command line utilities][10]
 
 ### Installing Sitecore Install Framework
 
@@ -65,3 +68,5 @@ Install-Module -Name SitecoreInstallFramework -Repository SitecoreGallery
 [6]: https://lucene.apache.org/solr/guide/6_6/enabling-ssl.html
 [7]: https://doc.sitecore.net/sitecore_experience_platform/developing/developing_with_sitecore/sitecore_powershell_public_nuget_feed_faq
 [8]: https://docs.microsoft.com/en-us/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable
+[9]: https://download.microsoft.com/download/D/5/E/D5EEF288-A277-45C8-855B-8E2CB7E25B96/x64/msodbcsql.msi
+[10]: https://download.microsoft.com/download/C/8/8/C88C2E51-8D23-4301-9F4B-64C8E2F163C5/x64/MsSqlCmdLnUtils.msi
