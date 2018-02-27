@@ -96,7 +96,6 @@ if(PackageAbsent 'Microsoft Command Line Utilities 13 for SQL Server') {
     InstallPackage -Source 'https://download.microsoft.com/download/C/8/8/C88C2E51-8D23-4301-9F4B-64C8E2F163C5/x64/MsSqlCmdLnUtils.msi' -FileName 'sqlcmd.msi' -InstallArgs '/passive /norestart IACCEPTMSSQLCMDLNUTILSLICENSETERMS=YES'
 }
 
-
 # Register the Sitecore PowerShell Repository - This is where SIF is installed from
 if(RepositoryAbsent SitecoreGallery){
     Register-PSRepository -Name SitecoreGallery -SourceLocation https://sitecore.myget.org/F/sc-powershell/api/v2 -InstallationPolicy Trusted
