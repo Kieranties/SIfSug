@@ -2,3 +2,8 @@
 /Configs/
 /Environment/jre-9.0.4_windows-x64_bin.exe
 /Packages/
+*.crt
+*.ttf
+*.otf
+*.log
+/Presentation/*

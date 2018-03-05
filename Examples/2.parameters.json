@@ -1,0 +1,30 @@
+{
+    "Parameters": {
+        "FirstFolder": {
+            "Type": "string",
+            "Description": "The first folder to create",
+            "DefaultValue": "c:\\sif\\parameters"
+        },
+        "SecondFolder": {
+            "Type": "string",
+            "Description": "The second folder to create",
+            "Reference": "FirstFolder"
+        },
+        "ThirdFolder": {
+            "Type": "string",
+            "Description": "The third folder to create"
+        }
+    },
+    "Tasks": {
+        "CreatePaths": {
+            "Type": "EnsurePath",
+            "Params": {
+                "Exists": [
+                    "[parameter('FirstFolder')]",
+                    "[parameter('SecondFolder')]",
+                    "[parameter('ThirdFolder')]"
+                ]
+            }
+        }
+    }
+}

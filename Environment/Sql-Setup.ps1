@@ -19,7 +19,7 @@ if($isAdmin -eq $false) {
 }
 
 # Check for PS module
-if($null -eq (Get-Module SqlPS -ErrorAction SilentlyContinue)) {
+if($null -eq (Get-Module SqlPS -ListAvailable -ErrorAction SilentlyContinue)) {
     throw "The SQL module is not available, are you sure SQL Server is installed?"
 }
 

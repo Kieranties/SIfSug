@@ -1,0 +1,103 @@
+{
+    "Parameters": {
+        "Prefix": {
+            "Type": "string",
+            "Description": "Prefix used for sites, solr, databases etc"
+        },
+        "SolrUrl": {
+            "Type": "string",
+            "DefaultValue": "https://localhost:8983/solr",
+            "Description": "The Solr instance url."
+        },
+        "SolrRoot": {
+            "Type": "string",
+            "DefaultValue": "c:\\solr-6.6.1",
+            "Description": "The file path to the Solr instance."
+        },
+        "SolrService": {
+            "Type": "string",
+            "DefaultValue": "Solr-6.6.1",
+            "Description": "The name of the Solr service."
+        },
+        "SqlAdminUser": {
+            "Type": "string",
+            "DefaultValue": "sa",
+            "Description": "The Sql admin user account to use when installing databases."
+        },
+        "SqlAdminPassword": {
+            "Type": "string",
+            "DefaultValue": "12345",
+            "Description": "The Sql admin password to use when installing databases."
+        },
+        "SqlServer": {
+            "Type": "string",
+            "DefaultValue": ".\\SQL2016",
+            "Description": "The Sql Server where databases will be installed."
+        }
+    },
+    "Variables": {
+        "All.With.Prefix": "[concat(parameter('Prefix'),'*')]",
+        "Install.Path": "[joinpath(environment('SystemDrive'), 'inetpub', 'wwwroot',variable('All.With.Prefix'))]",
+        "Sql.ConnectionString": "[sqlconnectionstring(parameter('SqlServer'), '', parameter('SqlAdminUser'), parameter('SqlAdminPassword'))]"
+    },
+    "Tasks": {
+        "RemoveWebsites": {
+            "Type": "RemoveWebsite",
+            "Params": {
+                "Name": "[variable('All.With.Prefix')]"
+            }
+        },
+        "RemoveAppPools": {
+            "Type": "RemoveWebAppPool",
+            "Params": {
+                "Name": "[variable('All.With.Prefix')]"
+            }
+        },
+        "RemoveServices": {
+            "Type": "RemoveService",
+            "Params": {
+                "Name": "[variable('All.With.Prefix')]"
+            }
+        },
+        "RemoveInstalledContent": {
+            "Type": "Remove",
+            "Params": {
+                "Path": "[variable('Install.Path')]",
+                "Recurse": true
+            }
+        },
+        "CleanUpSolr": {
+            "Type": "SitecoreConfiguration",
+            "Params": [
+                {
+                    "Path": "[resolvepath(joinpath('.', '..', 'Configs', 'sitecore-solr.json'))]",
+                    "Tasks": [ "StopSolr", "CleanCores"],
+                    "SolrRoot": "[parameter('SolrRoot')]",
+                    "SolrService": "[parameter('SolrService')]",
+                    "CorePrefix": "[parameter('prefix')]"
+                },
+                {
+                    "Path": "[resolvepath(joinpath('.', '..', 'Configs', 'xconnect-solr.json'))]",
+                    "Tasks": [ "CleanCores", "StartSolr"],
+                    "SolrRoot": "[parameter('SolrRoot')]",
+                    "SolrService": "[parameter('SolrService')]",
+                    "CorePrefix": "[parameter('prefix')]"
+                }
+            ]
+        },
+        "RemoveDatabases": {
+            "Type": "Sql",
+            "Params": {
+                "InputFile": "[resolvepath('.\\dropdatabases.sql')]",
+                "ConnectionString": "[variable('Sql.ConnectionString')]",
+                "Variable": "[concat('prefix=', parameter('prefix'), '%')]",
+                "OutputSqlErrors": true,
+                "Verbose": true
+            }
+        }
+    },
+    "Modules": [
+        "SqlServer",
+        ".\\extensions.psm1"
+    ]
+}

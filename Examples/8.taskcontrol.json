@@ -1,0 +1,37 @@
+{
+    "Tasks": {
+        "Alpha": {
+            "Type": "WriteMessage",
+            "Params": {
+                "Message": "Alpha"
+            }
+        },
+        "Beta": {
+            "Type": "WriteMessage",
+            "Params": {
+                "Message": "Beta"
+            }
+        },
+        "Gamma": {
+            "Type": "WriteMessage",
+            "Params": {
+                "Message": "Gamma"
+            }
+        },
+        "Delta": {
+            "Type": "WriteMessage",
+            "Params": {
+                "Message": "Delta"
+            }
+        },
+        "Epsilon": {
+            "Type": "WriteMessage",
+            "Params": {
+                "Message": "Epsilon"
+            }
+        }
+    },
+    "Modules": [
+        ".\\custom.psm1"
+    ]
+}

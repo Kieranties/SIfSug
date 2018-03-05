@@ -1,0 +1,24 @@
+{
+    "Parameters": {
+        "FolderRoot": {
+            "Type": "string",
+            "Description": "The root folder",
+            "DefaultValue": "c:\\sif"
+        },
+        "FolderName": {
+            "Type": "string",
+            "Description": "The folder to create",
+            "DefaultValue": "MyNewSifFolder"
+        }
+    },
+    "Tasks": {
+        "CreatePaths": {
+            "Type": "EnsurePath",
+            "Params": {
+                "Exists": [
+                    "[joinpath(parameter('FolderRoot'),parameter('FolderName'))]"
+                ]
+            }
+        }
+    }
+}

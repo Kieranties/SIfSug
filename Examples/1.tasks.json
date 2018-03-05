@@ -1,0 +1,15 @@
+{
+    "Tasks": {
+        "CreatePaths": {
+            "Type": "EnsurePath",
+            "Params": {
+                "Exists": [
+                    "c:\\sifdemo",
+                    "c:\\sifdemo\\one",
+                    "c:\\sifdemo\\two",
+                    "c:\\sifdemo\\one\\three"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "Parameters":{
+        "Message": {
+            "Type": "string",
+            "Description": "The message to write out"
+        }
+    },
+    "Tasks":{
+        "WriteMessage": {
+            "Type": "Write",
+            "Params": {
+                "Object": "[parameter('Message')]"
+            }
+        }
+    },
+    "Modules": [
+        ".\\extensions.psm1"
+    ]
+}

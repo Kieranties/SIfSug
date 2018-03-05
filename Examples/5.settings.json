@@ -1,0 +1,25 @@
+{
+    "Tasks":{
+        "FirstPaths": {
+            "Type": "EnsurePath",
+            "Params":{
+                "Exists": [
+                    "d:\\some\\path"
+                ]
+            }
+        },
+        "SecondPaths": {
+            "Type": "EnsurePath",
+            "Params":{
+                "Exists": [
+                    "c:\\some\\path"
+                ]
+            }
+        }
+    },
+    "Settings": {
+        "ErrorAction": "Continue",
+        "WarningAction": "SilentlyContinue",
+        "InformationAction": "SilentlyContinue"
+    }
+}

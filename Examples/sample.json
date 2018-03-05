@@ -1,0 +1,30 @@
+{
+    "Parameters": {
+        "PathRoot": {
+            "Type": "string",
+            "Description": "The root path",
+            "DefaultValue": "c:\\"
+        },
+        "Name": {
+            "Type": "string",
+            "Description": "The name of the new folder"
+        }
+    },
+    "Variables": {
+        "Full.Path": "[joinpath(parameter('PathRoot'),parameter('Name'))]"
+    },
+    "Tasks": {
+        "CreatePath":{
+            "Type": "EnsurePath",
+            "Params": {
+                "Exists": [ "[variable('Full.Path')]" ]
+            }
+        }
+    },
+    "Modules": [
+        // path or name of module
+    ],
+    "Settings": {
+        "WarningAction": "SilentlyContinue"
+    }
+}

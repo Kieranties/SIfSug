@@ -119,3 +119,5 @@ if($currentService) {
 }
 . $Nssmexe install $solrServiceName ([IO.Path]::Combine($solrDir, 'bin', 'solr.cmd')) -f -p $Port
 Start-Service $solrServiceName
+
+Start-Process "https://${HostName}:{$Port}"

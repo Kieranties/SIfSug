@@ -1,0 +1,21 @@
+{
+    "Parameters":{
+        "Message": {
+            "Type": "string",
+            "Description": "The message to write out",
+            "DefaultValue": "I am a message"
+        }
+    },
+    "Tasks":{
+        "WriteMessage": {
+            "Type": "WriteMessage",
+            "Params": {
+                "Message": "[parameter('Message')]",
+                "Color": "[getcolor()]"
+            }
+        }
+    },
+    "Modules": [
+        ".\\custom.psm1"
+    ]
+}

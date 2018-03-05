@@ -102,4 +102,6 @@ if(RepositoryAbsent SitecoreGallery){
 }
 
 # Install Sitecore Installation Framework
-Install-Module -Name SitecoreInstallFramework -Repository SitecoreGallery
+if(ModuleAbsent SitecoreInstallFramework) {
+    Install-Module -Name SitecoreInstallFramework -Repository SitecoreGallery
+}
