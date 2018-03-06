@@ -13,13 +13,6 @@
 # Certificate
 Install-SitecoreConfiguration @cert
 
-# Sitecore
-Install-SitecoreConfiguration @sitecoreSolr
-Install-SitecoreConfiguration @sitecoreCM
-Install-SitecoreConfiguration @sitecoreCD
-Install-SitecoreConfiguration @sitecorePRC
-Install-SitecoreConfiguration @sitecoreREP
-
 # Xconnect
 Install-SitecoreConfiguration @xconnectSolr
 Install-SitecoreConfiguration @xconnectCollection
@@ -27,3 +20,10 @@ Install-SitecoreConfiguration @xconnectCollectionSearch
 Install-SitecoreConfiguration @xconnectMaReporting
 Install-SitecoreConfiguration @xconnectMa
 Install-SitecoreConfiguration @xconnectReference
+
+# Sitecore
+Install-SitecoreConfiguration @sitecoreSolr
+Install-SitecoreConfiguration @sitecoreCM
+Install-SitecoreConfiguration @sitecoreCD
+Install-SitecoreConfiguration @sitecorePRC
+Install-SitecoreConfiguration @sitecoreREP
