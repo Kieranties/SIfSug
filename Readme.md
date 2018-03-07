@@ -25,7 +25,7 @@ The [Environment](/Environment) folder contains scripts to help prepare an
 environment for installation.
 
 + [Server-Setup.ps1](./Environment/Server-Setup.ps1) - Prepares a server where SIF will be executed.
-+ [Sql-Setup.ps1](./Environment/Ssql-Setup.ps1) - Enables contained databases on Sql Server.
++ [Sql-Setup.ps1](./Environment/Sql-Setup.ps1) - Enables contained databases on Sql Server.
 + [Solr-Setup.ps1](./Environment/Solr-Setup.ps1) - Installs Solr as a service (Install java jre first!).
 
 Gather the Sitecore assets for install
