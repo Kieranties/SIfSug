@@ -44,7 +44,7 @@ Download [here][5]. Please ensure you closely follow the detailed system require
 and install both versions of `SQLSysCLRTypes` and both versions of the `DacFramework`
 on x64 machines.
 + SqlCmd - Some configurations require use of SqlCmd. You will need to install
-[Microsoft ODBC driver][[9] and [Microsoft command line utilities][10]
+[Microsoft ODBC driver][9] and [Microsoft command line utilities][10]
 
 ### Installing Sitecore Install Framework
 
