@@ -4,15 +4,13 @@
 
     NOTE: This should be ran on the machine where SIF will be executed.
 #>
+
+#Requires -RunAsAdministrator
+
 param(
     [ValidateScript({Test-Path $_ })]
     [string]$Downloads = (Resolve-Path ~/Downloads)
 )
-
-$isAdmin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).Groups -match "S-1-5-32-544")
-if($isAdmin -eq $false) {
-    throw "You must run this script as an admin."
-}
 
 # Check for PowerShell 5.1
 $psversion = $PSVersionTable.PSVersion
@@ -83,7 +81,7 @@ if(PackageAbsent 'Microsoft SQL Server Data-Tier Application Framework (x86)') {
 }
 
 # DacFx 2016 - x64 - Required for dacapacs inside of WDPs
-if(PackageAbsent 'Microsoft SQL Server Data-Tier Application Framework (x86)') {
+if(PackageAbsent 'Microsoft SQL Server Data-Tier Application Framework (x64)') {
     InstallPackage -Source 'http://download.microsoft.com/download/E/4/1/E41A6614-9FB0-4675-8A97-08F8B1A1827D/EN/SQL13/amd64/SQLSysClrTypes.msi' -FileName 'sqlclrTypes.x64.msi'
     InstallPackage -Source 'https://download.microsoft.com/download/5/E/4/5E4FCC45-4D26-4CBE-8E2D-79DB86A85F09/EN/x64/DacFramework.msi' -FileName  'dacfx.x64.msi'
 }
